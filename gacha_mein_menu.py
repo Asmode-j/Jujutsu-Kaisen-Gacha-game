@@ -135,7 +135,7 @@ def Main_gacha():
                 if index <9:
                     index+=1
                     bg()
-                    img = PhotoImage(file=f"C:/Users/Asmodej/Desktop/Programming/Игра гача/CherectersFoto/{result_index[index]}.png")
+                    img = PhotoImage(file=f"CherectersFoto/{result_index[index]}.png")
                     OP.create_image(400,550,anchor=SE, image=img)
                     LP.configure(bg=bag)
                     LP.configure(text=f'{result[index]}')
@@ -154,7 +154,7 @@ def Main_gacha():
             bg()       
             OP= Canvas(window,width=400, height=600, bg='grey')
             OP.pack()
-            img = PhotoImage(file=f"C:/Users/Asmodej/Desktop/Programming/Игра гача/CherectersFoto/{result_index[index]}.png")
+            img = PhotoImage(file=f"CherectersFoto/{result_index[index]}.png")
             OP.create_image(400,550,anchor=SE, image=img)
             LP= Label(window,width=28, height=2,
                       bg=bag, text = f'{result[index]}')
@@ -245,7 +245,7 @@ def Main_gacha():
             index_1=0
             images=[]
             for i in (OP1,OP2,OP3,OP4,OP5,OP6,OP7,OP8,OP9,OP10):
-                image = Image.open(f"C:/Users/Asmodej/Desktop/Programming/Игра гача/CherectersFoto/{result_index[index_1]}.png")
+                image = Image.open(f"CherectersFoto/{result_index[index_1]}.png")
                 scaled_image = image.resize((138,225))
                 image4canvas = ImageTk.PhotoImage(scaled_image)
                 images.append(image4canvas)
@@ -378,7 +378,7 @@ def Main_gacha():
                 if index <9:
                     index+=1
                     bg()
-                    img = PhotoImage(file=f"C:/Users/Asmodej/Desktop/Programming/Игра гача/CherectersFoto/{result_index[index]}.png")
+                    img = PhotoImage(file=f"CherectersFoto/{result_index[index]}.png")
                     OP.create_image(400,550,anchor=SE, image=img)
                     LP.configure(bg=bag)
                     LP.configure(text=f'{result[index]}')
@@ -397,7 +397,7 @@ def Main_gacha():
             bg()       
             OP= Canvas(window,width=400, height=600, bg='grey')
             OP.pack()
-            img = PhotoImage(file=f"C:/Users/Asmodej/Desktop/Programming/Игра гача/CherectersFoto/{result_index[index]}.png")
+            img = PhotoImage(file=f"CherectersFoto/{result_index[index]}.png")
             OP.create_image(400,550,anchor=SE, image=img)
             LP= Label(window,width=28, height=2,
                       bg=bag, text = f'{result[index]}')
@@ -488,7 +488,7 @@ def Main_gacha():
             index_1=0
             images=[]
             for i in (OP1,OP2,OP3,OP4,OP5,OP6,OP7,OP8,OP9,OP10):
-                image = Image.open(f"C:/Users/Asmodej/Desktop/Programming/Игра гача/CherectersFoto/{result_index[index_1]}.png")
+                image = Image.open(f"CherectersFoto/{result_index[index_1]}.png")
                 scaled_image = image.resize((138,225))
                 image4canvas = ImageTk.PhotoImage(scaled_image)
                 images.append(image4canvas)
