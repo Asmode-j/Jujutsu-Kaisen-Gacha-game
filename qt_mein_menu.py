@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import sys, random, datetime
 from CherectersClass import *
 
-inventar_pers = []
+inventar_pers = ['01']
 kol_vo_do_SSR_classic = 0
 kol_vo_do_SR_classic = 0
 kol_vo_do_SSR_vrem = 0
@@ -10,19 +10,6 @@ kol_vo_do_SR_vrem = 0
 
 resolution_weight = 1280
 resolution_height = 800
-######################################
-# file = open("cherecters.txt", "r", encoding="utf-8")
-# lines = file.readlines()
-# for i in lines:
-#    ind = i.split(';')[0]
-#    inventar_pers.append(ind)
-#####################################
-
-# for ind,pers in zip(ind_pers, list_all_cherecters):
-#    print(ind, pers.name)
-    
-#GG=list_all_cherecters[5]
-#print(GG.name)
 
 class Main_menu(object):
     def main_menu(self, MainWindow):
@@ -30,7 +17,7 @@ class Main_menu(object):
         MainWindow.resize(resolution_weight, resolution_height)
         MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("background-image: url('Backgrounds/jjk_mein_menu.png')")
+        self.centralwidget.setStyleSheet("background-image: url('Data/Backgrounds/jjk_mein_menu.png')")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -99,7 +86,7 @@ class Main_menu(object):
         sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
         self.centralwidget.setSizePolicy(sizePolicy)
         self.centralwidget.setMinimumSize(QtCore.QSize(800, 600))
-        self.centralwidget.setStyleSheet("background-image: url('Backgrounds/jjk_mein_menu.png')")
+        self.centralwidget.setStyleSheet("background-image: url('Data/Backgrounds/jjk_mein_menu.png')")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -207,7 +194,7 @@ class Main_menu(object):
 
     def save_menu(self, MainWindow):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("background-image: url('Backgrounds/jjk_mein_menu.png')")
+        self.centralwidget.setStyleSheet("background-image: url('Data/Backgrounds/jjk_mein_menu.png')")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -266,31 +253,31 @@ class Main_menu(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         def change_save_text():
             try:
-                save_file_1 = open(f"save1.txt", "r")
+                save_file_1 = open(f"Data\Save\save1.txt", "r")
                 self.save_menu_save_1.setText(f"Cохранение 1: {save_file_1.readlines()[0]}")
                 self.save_menu_save_1.setStyleSheet("font: 42pt \"Arial\";"
                                                     "color: rgb(255, 255, 255);"
-                                                    "background-image: url('Backgrounds/jjk_mein_menu.png');"
+                                                    "background-image: url('Data/Backgrounds/jjk_mein_menu.png');"
                                                     "background-position: center")
                 save_file_1.close()
             except:
                 pass
             try:
-                save_file_2 = open(f"save2.txt", "r")
+                save_file_2 = open(f"Data\Save\save2.txt", "r")
                 self.save_menu_save_2.setText(f"Cохранение 2: {save_file_2.readlines()[0]}")
                 self.save_menu_save_2.setStyleSheet("font: 42pt \"Arial\";"
                                                     "color: rgb(255, 255, 255);"
-                                                    "background-image: url('Backgrounds/jjk_mein_menu.png');"
+                                                    "background-image: url('Data/Backgrounds/jjk_mein_menu.png');"
                                                     "background-position: center")
                 save_file_2.close()
             except:
                 pass
             try:
-                save_file_3 = open(f"save3.txt", "r")
+                save_file_3 = open(f"Data\Save\save3.txt", "r")
                 self.save_menu_save_3.setText(f"Cохранение 3: {save_file_3.readlines()[0]}")
                 self.save_menu_save_3.setStyleSheet("font: 42pt \"Arial\";"
                                                     "color: rgb(255, 255, 255);"
-                                                    "background-image: url('Backgrounds/jjk_mein_menu.png');"
+                                                    "background-image: url('Data/Backgrounds/jjk_mein_menu.png');"
                                                     "background-position: center")
                 save_file_3.close()
             except:
@@ -320,25 +307,25 @@ class Main_menu(object):
                 button_save.setText(f"Cохранение {save_index}: {date}")
                 button_save.setStyleSheet("font: 24pt \"Arial\";"
                                           "color: rgb(255, 255, 255)")
-                save_file = open(f"{name_save}.txt", "w+")
+                save_file = open(f"Data\Save\{name_save}.txt", "w+")
                 save_file.write(f"{date}\n{inventar_pers}\n{kol_vo_do_SSR_classic}\n{kol_vo_do_SR_classic}\n"
                                 f"{kol_vo_do_SSR_vrem}\n{kol_vo_do_SR_vrem}")
             elif button == self.save_menu_btn_download:
                 try:
                     if button_save == self.save_menu_save_1:
-                        save_file_1 = open(f"save1.txt", "r", encoding="utf-8")
+                        save_file_1 = open(f"Data\Save\save1.txt", "r", encoding="utf-8")
                         line = save_file_1.readlines()
                         for i in line[1][1:-2:].split(','):
                             i = i.replace(' ',"")
                             inventar_pers.append(str(i[1:-1:]))
-                        save_file_1 = open(f"save1.txt", "r", encoding="utf-8")
+                        save_file_1 = open(f"Data\Save\save1.txt", "r", encoding="utf-8")
                         line = save_file_1.readlines()
                         kol_vo_do_SSR_classic = int(line[2])
                         kol_vo_do_SR_classic = int(line[3])
                         kol_vo_do_SSR_vrem = int(line[4])
                         kol_vo_do_SR_vrem = int(line[5])
                     if button_save == self.save_menu_save_2:
-                        save_file_2 = open(f"save2.txt", "r", encoding="utf-8")
+                        save_file_2 = open(f"Data\Save\save2.txt", "r", encoding="utf-8")
                         line = save_file_2.readlines()
                         for i in line[1][1:-2:].split(','):
                             i = i.replace(' ', "")
@@ -348,7 +335,7 @@ class Main_menu(object):
                         kol_vo_do_SSR_vrem = int(line[4])
                         kol_vo_do_SR_vrem = int(line[5])
                     if button_save == self.save_menu_save_3:
-                        save_file_3 = open(f"save3.txt", "r", encoding="utf-8")
+                        save_file_3 = open(f"Data\Save\save3.txt", "r", encoding="utf-8")
                         line = save_file_3.readlines()
                         for i in line[1][1:-2:].split(','):
                             i = i.replace(' ', "")
@@ -370,7 +357,7 @@ class Main_menu(object):
     def menu_info_pers(self, MainWindow):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.centralwidget.setStyleSheet("background-image: url('Backgrounds/jjk_mein_menu.png');font: 18pt \"MS Shell Dlg 2\";")
+        self.centralwidget.setStyleSheet("background-image: url('Data/Backgrounds/jjk_mein_menu.png');font: 18pt \"MS Shell Dlg 2\";")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.info_pers_parametr_WIZ = QtWidgets.QLabel(self.centralwidget)
@@ -559,7 +546,7 @@ class Main_menu(object):
         self.gridLayout = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName("gridLayout")
 
-        file = open("cherecters.txt", "r", encoding="utf-8")
+        file = open("Data/Cherecters/cherecters.txt", "r", encoding="utf-8")
         lines = file.readlines()
         ind_pers = []
         name_pers = []
@@ -631,7 +618,7 @@ class Main_menu(object):
                 i.setMinimumSize(QtCore.QSize(75, 75))
                 i.setStyleSheet("background-color: rgb(197, 197, 197);")
                 if ind in inventar_pers:
-                    i.setStyleSheet(f"background-image: url(CherectersFoto/ikons/{ind_pers[inde]}.png)")
+                    i.setStyleSheet(f"background-image: url(Data/CherectersFoto/ikons/{ind_pers[inde]}.png)")
                 i.setObjectName(f"{i}")
                 if c==5:
                     c = 0
@@ -659,12 +646,12 @@ class Main_menu(object):
             button = MainWindow.sender()
             for e,i in enumerate(zip(ind_pers, btn_ikons)):
                 if button==i[1]:
-                    self.pix = QtGui.QPixmap(f"CherectersFoto/{i[0]}.png")
+                    self.pix = QtGui.QPixmap(f"Data/CherectersFoto/{i[0]}.png")
                     self.pix1 = self.pix.scaled(600, 600, QtCore.Qt.KeepAspectRatio)
                     self.info_pers_info_image_pers.setPixmap(self.pix1)
                     char = list_all_cherecters[e]
 
-                    self.info_pers_name.setText(f"Имя: {char.name}")
+                    self.info_pers_name.setText(f"Имя: {char.NAME}")
                     self.info_pers_parametr_STR.setText(f"Сила: {char.STR}")
                     self.info_pers_parametr_DEX.setText(f"Ловкость:{char.DEX}")
                     self.info_pers_parametr_CON.setText(f"Телосложение:{char.CON}")
@@ -676,9 +663,10 @@ class Main_menu(object):
                                                           "p, li { white-space: pre-wrap; }\n"
                                                           "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
                                                           "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0;"
-                                                          f" text-indent:0px;\"><span style=\" font-size:14pt;\">{lines[e].split(';')[2]}</span></p></body></html>")
+                                                          f" text-indent:0px;\"><span style=\" font-size:14pt;\">{char.INFO}</span></p></body></html>")
                     def text_abilites_Html():
-                        abilites = lines[e].split(';')[3].split(",")
+                        abilites = char.ABIL
+                        abilites = abilites.split(",")
                         try:
                             self.info_pers_text_abilities.setHtml(f"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                                                   "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -762,12 +750,12 @@ class Main_menu(object):
             for e,i in enumerate(zip(ind_pers,btn_ikons)):
                 x = i[1].isEnabled()
                 if x == True:
-                    self.pix = QtGui.QPixmap(f"CherectersFoto/{i[0]}.png")
+                    self.pix = QtGui.QPixmap(f"Data/CherectersFoto/{i[0]}.png")
                     self.pix1 = self.pix.scaled(600, 600, QtCore.Qt.KeepAspectRatio)
                     self.info_pers_info_image_pers.setPixmap(self.pix1)
                     char = list_all_cherecters[e]
 
-                    self.info_pers_name.setText(f"Имя: {char.name}")
+                    self.info_pers_name.setText(f"Имя: {char.NAME}")
                     self.info_pers_parametr_STR.setText(f"Сила: {char.STR}")
                     self.info_pers_parametr_DEX.setText(f"Ловкость:{char.DEX}")
                     self.info_pers_parametr_CON.setText(f"Телосложение:{char.CON}")
@@ -780,10 +768,11 @@ class Main_menu(object):
                         "p, li { white-space: pre-wrap; }\n"
                         "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
                         "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0;"
-                        f" text-indent:0px;\"><span style=\" font-size:14pt;\">{lines[e].split(';')[2]}</span></p></body></html>")
+                        f" text-indent:0px;\"><span style=\" font-size:14pt;\">{char.INFO}</span></p></body></html>")
 
                     def text_abilites_Html():
-                        abilites = lines[e].split(';')[3].split(",")
+                        abilites = char.ABIL
+                        abilites = abilites.split(",")
                         try:
                             self.info_pers_text_abilities.setHtml(
                                 f"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -838,7 +827,7 @@ class Main_menu(object):
     def random_cherecter(self, x1_or_x10, gacha):
         global kol_vo_do_SSR_classic, kol_vo_do_SR_classic, kol_vo_do_SSR_vrem, kol_vo_do_SR_vrem,\
             colors, names, result_index, zamena_texta_v_okno_s_perekl
-        file = open("cherecters.txt", "r", encoding="utf-8")
+        file = open("Data/Cherecters/cherecters.txt", "r", encoding="utf-8")
         lines = file.readlines()
         result_index = []
         colors = []
@@ -1004,7 +993,7 @@ class Main_menu(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("background-image: url('Backgrounds/jjk_mein_menu.png');font: 18pt \"MS Shell Dlg 2\";")
+        self.centralwidget.setStyleSheet("background-image: url('Data/Backgrounds/jjk_mein_menu.png');font: 18pt \"MS Shell Dlg 2\";")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -1053,7 +1042,7 @@ class Main_menu(object):
         self.gacha_menu_tabWidget.setObjectName("gacha_menu_tabWidget")
         self.gacha_menu_tab = QtWidgets.QWidget()
         self.gacha_menu_tab.setAccessibleDescription("")
-        self.gacha_menu_tab.setStyleSheet("background-image: url(Backgrounds/gacha1_foto.png);")
+        self.gacha_menu_tab.setStyleSheet("background-image: url(Data/Backgrounds/gacha1_foto.png);")
         self.gacha_menu_tab.setObjectName("gacha_menu_tab")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.gacha_menu_tab)
         self.gridLayout_2.setObjectName("gridLayout_2")
@@ -1066,7 +1055,7 @@ class Main_menu(object):
         self.gacha_menu_btn_gacha_x10.setMinimumSize(QtCore.QSize(200, 0))
         self.gacha_menu_btn_gacha_x10.setStyleSheet("background-color: rgb(0, 0, 0);\n"
                                                     "font: 16pt \"MS Shell Dlg 2\";color: white;"
-                                                    "background-image: url('Backgrounds/jjk_mein_menu.png')")
+                                                    "background-image: url('Data/Backgrounds/jjk_mein_menu.png')")
         self.gacha_menu_btn_gacha_x10.setIconSize(QtCore.QSize(16, 16))
         self.gacha_menu_btn_gacha_x10.setObjectName("gacha_menu_btn_gacha_x10")
         self.gridLayout_2.addWidget(self.gacha_menu_btn_gacha_x10, 1, 2, 1, 1)
@@ -1089,12 +1078,12 @@ class Main_menu(object):
         self.gacha_menu_btn_gacha_x1.setMinimumSize(QtCore.QSize(200, 0))
         self.gacha_menu_btn_gacha_x1.setStyleSheet("background-color: rgb(0, 0, 0);\n"
                                                     "font: 16pt \"MS Shell Dlg 2\";color: white;"
-                                                    "background-image: url('Backgrounds/jjk_mein_menu.png')")
+                                                    "background-image: url('Data/Backgrounds/jjk_mein_menu.png')")
         self.gacha_menu_btn_gacha_x1.setObjectName("gacha_menu_btn_gacha_x1")
         self.gridLayout_2.addWidget(self.gacha_menu_btn_gacha_x1, 1, 1, 1, 1)
         self.gacha_menu_tabWidget.addTab(self.gacha_menu_tab, "")
         self.gacha_menu_tab_2 = QtWidgets.QWidget()
-        self.gacha_menu_tab_2.setStyleSheet("background-image: url(Backgrounds/gacha2_foto.png);")
+        self.gacha_menu_tab_2.setStyleSheet("background-image: url(Data/Backgrounds/gacha2_foto.png);")
         self.gacha_menu_tab_2.setObjectName("gacha_menu_tab_2")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.gacha_menu_tab_2)
         self.gridLayout_3.setObjectName("gridLayout_3")
@@ -1107,7 +1096,7 @@ class Main_menu(object):
         self.gacha_menu_btn_gacha_x10_2.setMinimumSize(QtCore.QSize(200, 0))
         self.gacha_menu_btn_gacha_x10_2.setStyleSheet("background-color: rgb(0, 0, 0);\n"
                                                     "font: 16pt \"MS Shell Dlg 2\";color: white;"
-                                                    "background-image: url('Backgrounds/jjk_mein_menu.png')")
+                                                    "background-image: url('Data/Backgrounds/jjk_mein_menu.png')")
         self.gacha_menu_btn_gacha_x10_2.setIconSize(QtCore.QSize(16, 16))
         self.gacha_menu_btn_gacha_x10_2.setObjectName("gacha_menu_btn_gacha_x10_2")
         self.gridLayout_3.addWidget(self.gacha_menu_btn_gacha_x10_2, 1, 2, 1, 1)
@@ -1130,7 +1119,7 @@ class Main_menu(object):
         self.gacha_menu_btn_gacha_x1_2.setMinimumSize(QtCore.QSize(200, 0))
         self.gacha_menu_btn_gacha_x1_2.setStyleSheet("background-color: rgb(0, 0, 0);\n"
                                                     "font: 16pt \"MS Shell Dlg 2\";color: white;"
-                                                    "background-image: url('Backgrounds/jjk_mein_menu.png')")
+                                                    "background-image: url('Data/Backgrounds/jjk_mein_menu.png')")
         self.gacha_menu_btn_gacha_x1_2.setObjectName("gacha_menu_btn_gacha_x1_2")
         self.gridLayout_3.addWidget(self.gacha_menu_btn_gacha_x1_2, 1, 1, 1, 1)
         self.gacha_menu_tabWidget.addTab(self.gacha_menu_tab_2, "")
@@ -1156,7 +1145,7 @@ class Main_menu(object):
         index=0
         MainWindow.setObjectName("MainWindow")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("background-image: url('Backgrounds/jjk_mein_menu.png');font: 18pt \"MS Shell Dlg 2\";")
+        self.centralwidget.setStyleSheet("background-image: url('Data/Backgrounds/jjk_mein_menu.png');font: 18pt \"MS Shell Dlg 2\";")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -1184,7 +1173,7 @@ class Main_menu(object):
         self.okno_s_perekl_image.setSizePolicy(sizePolicy)
         self.okno_s_perekl_image.setMinimumSize(QtCore.QSize(400, 600))
         self.okno_s_perekl_image.setStyleSheet(f"background-color: rgb(255, 255, 255);"
-                                      f"background-image: url(CherectersFoto/{result_index[index]}.png)")
+                                      f"background-image: url(Data/CherectersFoto/{result_index[index]}.png)")
         self.okno_s_perekl_image.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.okno_s_perekl_image.setFrameShadow(QtWidgets.QFrame.Raised)
         self.okno_s_perekl_image.setObjectName("okno_s_perekl_image")
@@ -1192,7 +1181,7 @@ class Main_menu(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.okno_s_perekl_name = QtWidgets.QLabel(self.okno_s_perekl_image)
         self.okno_s_perekl_name.setStyleSheet(f"color: {colors[index]} ;font: 16pt \"MS Shell Dlg 2\";"
-                                              f"background-image: url(CherectersFoto/12.png)")
+                                              f"background-image: url(Data/CherectersFoto/12.png)")
         self.okno_s_perekl_name.setText(f"{names[index]}")
         self.okno_s_perekl_name.setObjectName("okno_s_perekl_name")
         self.gridLayout_2.addWidget(self.okno_s_perekl_name, 1, 2, 1, 1)
@@ -1212,9 +1201,9 @@ class Main_menu(object):
                 if self.index < 9:
                     self.index += 1
                     self.okno_s_perekl_image.setStyleSheet(f"background-color: rgb(255, 255, 255);"
-                                                           f"background-image: url(CherectersFoto/{result_index[self.index]}.png)")
+                                                           f"background-image: url(Data/CherectersFoto/{result_index[self.index]}.png)")
                     self.okno_s_perekl_name.setStyleSheet(f"color: {colors[self.index]} ;font: 16pt \"MS Shell Dlg 2\";"
-                                                          f"background-image: url(CherectersFoto/12.png)")
+                                                          f"background-image: url(Data/CherectersFoto/12.png)")
                     self.okno_s_perekl_name.setText(f"{names[self.index]}")
                 elif self.index == 9:
                     self.okno_all_pers(MainWindow, gacha)
@@ -1242,7 +1231,7 @@ class Main_menu(object):
     def okno_all_pers(self, MainWindow, gacha):
         MainWindow.setObjectName("MainWindow")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("background-image: url('Backgrounds/jjk_mein_menu.png');font: 18pt \"MS Shell Dlg 2\";")
+        self.centralwidget.setStyleSheet("background-image: url('Data/Backgrounds/jjk_mein_menu.png');font: 18pt \"MS Shell Dlg 2\";")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
@@ -1521,14 +1510,14 @@ class Main_menu(object):
         for count,i in enumerate((self.okno_all_pers_name,self.okno_all_pers_name_2,self.okno_all_pers_name_3,self.okno_all_pers_name_4,self.okno_all_pers_name_5,
                                   self.okno_all_pers_name_6,self.okno_all_pers_name_7,self.okno_all_pers_name_8,self.okno_all_pers_name_9,self.okno_all_pers_name_10)):
             i.setStyleSheet(f"color: {colors[count]} ;font: 12pt \"MS Shell Dlg 2\";"
-                            f"background-image: url(CherectersFoto/12.png)")
+                            f"background-image: url(Data/CherectersFoto/12.png)")
             i.setText(f"{names[count]}")
 
         for e, i in enumerate((self.okno_all_pers_image, self.okno_all_pers_image_2, self.okno_all_pers_image_3,
                                self.okno_all_pers_image_4, self.okno_all_pers_image_5,
                                self.okno_all_pers_image_6,self.okno_all_pers_image_7,self.okno_all_pers_image_8,
                                self.okno_all_pers_image_9,self.okno_all_pers_image_10)):
-            self.pix = QtGui.QPixmap(f"CherectersFoto/{result_index[e]}.png")
+            self.pix = QtGui.QPixmap(f"Data/CherectersFoto/{result_index[e]}.png")
             self.pix1 = self.pix.scaled(200, 300, QtCore.Qt.KeepAspectRatio)
             i.setPixmap(self.pix1)
 
@@ -1548,7 +1537,7 @@ class Main_menu(object):
     def save_menu_retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.save_menu_btn_save.setText(_translate("MainWindow", "Созранить/Перезаписать"))
+        self.save_menu_btn_save.setText(_translate("MainWindow", "Сохранить/Перезаписать"))
         self.save_menu_btn_download.setText(_translate("MainWindow", "Загрузить"))
         self.save_menu_btn_hide.setText(_translate("MainWindow", "Назад"))
 
@@ -1603,4 +1592,3 @@ if __name__=="__main__":
     MainWindow.show()
 
     sys.exit(app.exec())
-
