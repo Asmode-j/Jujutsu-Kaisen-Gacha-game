@@ -7,7 +7,7 @@ from FloorClass import create_all_Floors
 from CharactersClass import *
 from CardsClass import dict_all_cards
 from EventsClass import list_all_events, only_id_events, dict_all_events, dict_obj_all_events
-from AartifactsClass import list_obj_all_artifacts, dict_all_artifacts
+from ArtifactsClass import list_obj_all_artifacts, dict_all_artifacts
 
 game_player = list_all_characters[0]
 # print(game_player.NAME)
