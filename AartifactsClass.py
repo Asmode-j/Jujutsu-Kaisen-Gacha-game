@@ -8,7 +8,6 @@ class Artifacts:
         self.text_art = text_artifact
 
 
-
 list_obj_all_artifacts = []
 
 dict_all_artifacts = {}
